@@ -47,47 +47,45 @@ const useStyles = makeStyles({
 		marginTop: '15px',
 		marginBottom: '20px',
 	},
-	btnSignUp: {
+	btnSignIn: {
 		float: 'right',
 		fontWeight: 'bold',
 		marginRight: '10px',
 		marginTop: '4px'
 	},
 	btnSubmit: {
+		marginTop: '10px',
 		marginBottom: '10px'
 	},
 });
 
-const Login = () => {
+const SignUp = () => {
 	const classes = useStyles();
 
   return (
     <div>
 			<List className={`${classes.listStyle} && ${classes.root}`}>
 				<div className={classes.top}>
-					<div className={classes.lable}>Sign in</div>
-					<Button className={`${classes.button} && ${classes.btnSignUp}`} variant="contained" color="primary">
-						<Link href="/register" style={{ 
+					<div className={classes.lable}>Sign up</div>
+					<Button className={`${classes.button} && ${classes.btnSignIn}`} variant="contained" color="primary">
+						<Link href="/login" style={{ 
 							textDecoration: 'none', 
 							color: 'white' 
 						}}
-						>Sign Up</Link>
+						>Sign In</Link>
 					</Button>
 				</div >
 				<form className={classes.root} noValidate autoComplete="off">
+					<TextField className={classes.textField} label="First name" variant="outlined" required />
+					<TextField className={classes.textField} label="Last name" variant="outlined" required />
 					<TextField className={classes.textField} label="Email" variant="outlined" required />
 					<TextField className={classes.textField} label="Password" variant="outlined" required />
+					<TextField className={classes.textField} label="Confirm password" variant="outlined" required />
 				</form>
-				<div className={classes.top}>
-					<Link href="/restore-password" style={{ 
-							textDecoration: 'none'
-						}}
-					>Forgot password?</Link>
-				</div>
 				<Button className={`${classes.button} && ${classes.btnSubmit}`} variant="contained" color="primary" disabled>Submit</Button>
 			</List>
     </div>
   );
 };
 
-export default Login ;
+export default SignUp ;

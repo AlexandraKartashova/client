@@ -1,18 +1,26 @@
 import React from 'react';
 import './App.css';
+import { Route, BrowserRouter } from 'react-router-dom';
+import Login from './components/Login';
+import SignUp from './components/SignUp';
+import ForgotPassword from './components/ForgotPassword';
 // import Header from './components/Header';
 // import Footer from './components/Footer';
 // import NavBar from './components/NavBar';
-import Login from './components/Login';
 
 function App() {
   return (
-    <div className='App'>
-      {/* <Header />
-      <NavBar />
-      <Footer /> */}
-      <Login />
-    </div>
+    <BrowserRouter>
+      <div className='App'>
+        <Route path='/login' component={Login} />
+        <Route path='/register' component={SignUp} />
+        <Route path='/restore-password' component={ForgotPassword} />
+        
+        {/* <Header />
+        <NavBar />
+        <Footer /> */}
+      </div>
+    </BrowserRouter>
   );
 }
 

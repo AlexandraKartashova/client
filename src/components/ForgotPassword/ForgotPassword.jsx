@@ -32,10 +32,10 @@ const useStyles = makeStyles({
 	},
 	lable: {
 		display: 'inlineBlock',
-		color: 'blue',
-		fontSize: '30px',
+		color: 'black',
+		fontSize: '28px',
 		fontWeight: 'bold',
-		float: 'left',
+		float: 'center',
 		marginBottom: '15px',
 		marginLeft: '10px',
 		marginTop: '4px'
@@ -53,41 +53,35 @@ const useStyles = makeStyles({
 		marginRight: '10px',
 		marginTop: '4px'
 	},
-	btnSubmit: {
+	btnCansel: {
+		marginTop: '10px',
 		marginBottom: '10px'
 	},
 });
 
-const Login = () => {
+const ForgotPassword = () => {
 	const classes = useStyles();
 
   return (
     <div>
 			<List className={`${classes.listStyle} && ${classes.root}`}>
 				<div className={classes.top}>
-					<div className={classes.lable}>Sign in</div>
-					<Button className={`${classes.button} && ${classes.btnSignUp}`} variant="contained" color="primary">
-						<Link href="/register" style={{ 
-							textDecoration: 'none', 
-							color: 'white' 
-						}}
-						>Sign Up</Link>
-					</Button>
+					<div className={classes.lable}>Forgot password?</div>
+					<div>Enter your email address below to reset your password</div>
 				</div >
 				<form className={classes.root} noValidate autoComplete="off">
 					<TextField className={classes.textField} label="Email" variant="outlined" required />
-					<TextField className={classes.textField} label="Password" variant="outlined" required />
 				</form>
-				<div className={classes.top}>
-					<Link href="/restore-password" style={{ 
-							textDecoration: 'none'
+				<Button className={`${classes.button} && ${classes.btnCansel}`} variant="contained" color="primary">
+					<Link href="/login" style={{ 
+							textDecoration: 'none', 
+							color: 'white' 
 						}}
-					>Forgot password?</Link>
-				</div>
-				<Button className={`${classes.button} && ${classes.btnSubmit}`} variant="contained" color="primary" disabled>Submit</Button>
+						>Cansel</Link>
+				</Button>
 			</List>
     </div>
   );
 };
 
-export default Login ;
+export default ForgotPassword ;
