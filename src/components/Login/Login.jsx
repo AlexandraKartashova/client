@@ -14,7 +14,7 @@ const useStyles = makeStyles({
 		width: '100%'
 	},
 	listStyle: {
-		width: '30%',
+		width: '40%',
 		marginLeft: '35%',
 		boxShadow: '0 0 45px 15px #ccc',
 		borderRadius: '10px',
@@ -24,7 +24,7 @@ const useStyles = makeStyles({
 		position: 'relative',
 		marginBottom: '10px',
 		width: '100%',
-		paddingBottom: '25px'
+		paddingBottom: '30px'
 	},
 	textFieldErr: {
 		borderWidth: '1px',
@@ -116,7 +116,6 @@ const Login = () => {
 		})
 		.then(() => setErrEmail([]))
 		.catch(e =>	setErrEmail(e.errors));
-		console.log('-----', emailSchema);
 	};
 
 	const changeInputPassword = (e) => {
@@ -127,14 +126,11 @@ const Login = () => {
 		})
 		.then(() => setErrPassword([]))
 		.catch(e => setErrPassword(e.errors));
-		console.log('-----', passwordSchema);
 	};
 
 	const onSubmitHandler = async (e) => {
 
 	}
-	console.log('errEmail', errEmail);
-	console.log('errPassword', errPassword);
   return (
     <div>
 			<List className={`${classes.listStyle} && ${classes.root}`}>
@@ -156,7 +152,9 @@ const Login = () => {
 								}
 							}}
 						/>
-						{(errEmail?.length > 0) && <p className={`${classes.pErrore} && ${classes.pErrEmail}`}>{errEmail[0]}</p>}
+						{(errEmail?.length > 0)
+						&& <p className={`${classes.pErrore} 
+						&& ${classes.pErrEmail}`}>{errEmail[0]}</p>}
 					</div>
 					<div className={classes.div} >
 						<TextField 
@@ -172,7 +170,9 @@ const Login = () => {
 								}
 							}}
 						/>
-						{(errPassword?.length > 0) && <p className={`${classes.pErrore} && ${classes.pErrPassword}`}>{errPassword[0]}</p>}
+						{(errPassword?.length > 0) 
+						&& <p className={`${classes.pErrore} 
+						&& ${classes.pErrPassword}`}>{errPassword[0]}</p>}
 					</div>
 				</form>
 				<div className={classes.top}>
