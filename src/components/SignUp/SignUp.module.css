@@ -1,0 +1,100 @@
+.root {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+}
+
+.listStyle {
+	width: 40%;
+	margin-left: 35%;
+	box-shadow: 0 0 45px 15px #ccc;
+	border-radius: 10px;
+	margin-bottom: 40px
+}
+
+.textField {
+	position: relative;
+	margin-bottom: 10px;
+	width: 100%;
+	padding-bottom: 30px
+}
+
+.textFieldErr {
+	border-width: 1px;
+	border-color: red !important
+}
+
+.textFieldOk {
+	border-width: 1px;
+	border-color: green !important
+}
+
+.button {
+	text-transform: none;
+	font-size: 20px;
+	margin-right: 5px;
+	border-radius: 5px;
+}
+
+.lable {
+	display: inline-block;
+	color: blue;
+	font-size: 30px;
+	font-weight: bold;
+	/* float: center; */
+	margin-bottom: 15px;
+	margin-left: 10px;
+	margin-top: 4px
+}
+
+.top {
+	/* display: inline; */
+	width: 80%;
+	margin-top: 15px;
+	margin-bottom: 20px;
+}
+
+.btnSignIn {
+	font-weight: bold;
+	margin-right: 10px;
+}
+
+.btnSubmit {
+	margin-top: 10px;
+	margin-bottom: 10px
+}
+
+.div {
+	display: flex;
+	flex-direction: column;
+	width: 70%;
+	margin-bottom: 12px;
+}
+
+.pErrore {
+	color: red;
+	position: absolute;
+	float: left;
+	margin-right: 60px;
+}
+
+.pErrFirstName{
+	top: 145px;
+}
+
+.pErrLastName{
+	top: 250px;
+}
+
+.pErrEmail{
+	top: 360px;
+}
+
+.pErrPassword{
+	top: 465px;
+}
+
+.pErrConfirmPassword{
+	top: 575px;
+};

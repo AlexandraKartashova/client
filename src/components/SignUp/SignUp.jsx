@@ -5,6 +5,7 @@ import List from '@material-ui/core/List';
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
 import * as Yup from 'yup';
+// import classes from './SignUp.module.css';
 
 const useStyles = makeStyles({
 	root: {
@@ -205,10 +206,19 @@ const SignUp = () => {
 		.catch(e =>	setErrConfirmPassword(e.errors));
 	};
 
-	const loginHandler = () => {
+	const loginHandler = 
+	(changeInputFirstName
+		&& changeInputLastName
+		&& changeInputEmail
+		&& changeInputPassword
+		&& changeInputConfirmPassword) 
 
-	}
-
+	console.log('---1', changeInputFirstName)
+	console.log('---2', changeInputLastName)
+	console.log('---3', changeInputEmail)
+	console.log('---4', changeInputPassword)
+	console.log('---5', changeInputConfirmPassword)
+	console.log('summ', loginHandler)
   return (
     <div>
 			<List className={`${classes.listStyle} && ${classes.root}`}>
@@ -310,9 +320,10 @@ const SignUp = () => {
 				<div>
 					<Button 
 						className={`${classes.button} && ${classes.btnSubmit}`} 
+						id='btnSubmit'
 						variant="contained" 
 						color="primary" 
-						disabled
+						disabled={loginHandler}
 					>Submit</Button>
 					<Button 
 						className={`${classes.button} && ${classes.btnSignIn}`} 
