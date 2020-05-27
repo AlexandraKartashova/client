@@ -211,17 +211,8 @@ const SignUp = () => {
 		&& lastNameSchema.isValidSync({lastName})
 		&& emailSchema.isValidSync({email})
 		&& passwordSchema.isValidSync({password})
-		&& (confirmPassword == password)
+		&& (confirmPassword === password)
 		));
-
-		console.log('firstName', emailSchema.isValidSync({email}))
-		console.log('lastNameSchema', lastNameSchema.isValidSync({lastName}))
-		console.log('firstNameSchema', firstNameSchema.isValidSync({firstName}))
-		console.log('passwordSchema', passwordSchema.isValidSync({password}))
-		console.log('confirmPasswordSchema', confirmPasswordSchema.isValidSync({confirmPassword}))
-
-
-
 
   return (
     <div>
