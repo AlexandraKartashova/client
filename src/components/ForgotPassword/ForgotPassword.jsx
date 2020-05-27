@@ -5,7 +5,6 @@ import List from '@material-ui/core/List';
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
 
-
 const useStyles = makeStyles({
 	root: {
 		display: 'flex',
@@ -39,7 +38,6 @@ const useStyles = makeStyles({
 		marginBottom: '15px',
 		marginLeft: '10px',
 		marginTop: '4px'
-
 	},
 	top: {
 		display: 'inline',
