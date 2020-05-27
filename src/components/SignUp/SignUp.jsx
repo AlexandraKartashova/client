@@ -124,7 +124,7 @@ const emailSchema = Yup.object().shape({
 	const confirmPasswordSchema = Yup.object().shape({
 		confirmPassword: Yup.string()
 			.required('Requered password')
-			.oneOf([Yup.ref('password'), null], 'Passwords must match')
+			.oneOf([Yup.ref('password'),null], 'Passwords must match')
 		})
 
 const SignUp = () => {
@@ -206,26 +206,30 @@ const SignUp = () => {
 		.catch(e =>	setErrConfirmPassword(e.errors));
 	};
 
-	const loginHandler = 
-	(changeInputFirstName
-		&& changeInputLastName
-		&& changeInputEmail
-		&& changeInputPassword
-		&& changeInputConfirmPassword) 
+	const loginHandler =  
+	!((firstNameSchema.isValidSync({firstName})
+		&& lastNameSchema.isValidSync({lastName})
+		&& emailSchema.isValidSync({email})
+		&& passwordSchema.isValidSync({password})
+		&& (confirmPassword == password)
+		));
 
-	console.log('---1', changeInputFirstName)
-	console.log('---2', changeInputLastName)
-	console.log('---3', changeInputEmail)
-	console.log('---4', changeInputPassword)
-	console.log('---5', changeInputConfirmPassword)
-	console.log('summ', loginHandler)
+		console.log('firstName', emailSchema.isValidSync({email}))
+		console.log('lastNameSchema', lastNameSchema.isValidSync({lastName}))
+		console.log('firstNameSchema', firstNameSchema.isValidSync({firstName}))
+		console.log('passwordSchema', passwordSchema.isValidSync({password}))
+		console.log('confirmPasswordSchema', confirmPasswordSchema.isValidSync({confirmPassword}))
+
+
+
+
   return (
     <div>
 			<List className={`${classes.listStyle} && ${classes.root}`}>
 				<div className={classes.top}>
 					<div className={classes.lable}>Sign up</div>
 				</div >
-				<form className={classes.root} noValidate autoComplete="off" method='post'>
+				<form className={classes.root} autoComplete="off" method='post'>
 					<div className={classes.div}>
 						<TextField 
 							className={classes.textField} 
@@ -284,13 +288,14 @@ const SignUp = () => {
 						<TextField 
 							className={classes.textField} 
 							value={password}
+							// type='password'
 							label="Password" 
 							variant="outlined" 
 							onInput={changeInputPassword}
 							required 
 							InputProps={{
 								classes: {
-									notchedOutline: (errConfirmPassword?.length > 0) ? classes.textFieldErr : classes.textFieldOk,
+									notchedOutline: (errPassword?.length > 0) ? classes.textFieldErr : classes.textFieldOk,
 								}
 							}}
 						/>
@@ -313,8 +318,8 @@ const SignUp = () => {
 							}}
 						/>
 						{(errConfirmPassword?.length > 0) 
-								&& <p className={`${classes.pErrore} 
-								&& ${classes.pErrConfirmPassword}`}>{errConfirmPassword[0]}</p>}
+							&& <p className={`${classes.pErrore} 
+							&& ${classes.pErrConfirmPassword}`}>{errConfirmPassword[0]}</p>}
 					</div>
 				</form>
 				<div>

@@ -104,6 +104,9 @@ const ForgotPassword = () => {
 		.catch(e =>	setErrEmail(e.errors));
 	};
 
+	const onSubmitHandler =
+	!(emailSchema.isValidSync({email}));
+
   return (
     <div>
 			<List className={`${classes.listStyle} && ${classes.root}`}>
@@ -131,16 +134,25 @@ const ForgotPassword = () => {
 						&& ${classes.pErrEmail}`}>{errEmail[0]}</p>}
 					</div>
 				</form>
-				<Button 
-					className={`${classes.button} && ${classes.btnCansel}`} 
-					variant="contained" 
-					color="primary">
-						<Link href="/login" style={{ 
-								textDecoration: 'none', 
-								color: 'white' 
-							}}
-							>Cansel</Link>
-				</Button>
+				<div>
+					<Button 
+							className={`${classes.button} && ${classes.btnSubmit}`} 
+							id='btnSubmit'
+							variant="contained" 
+							color="primary" 
+							disabled={onSubmitHandler}
+						>Submit</Button>
+						<Button 
+							className={`${classes.button} && ${classes.btnCansel}`} 
+							variant="contained" 
+							color="primary">
+								<Link href="/login" style={{ 
+										textDecoration: 'none', 
+										color: 'white' 
+									}}
+									>Cansel</Link>
+						</Button>
+				</div>
 			</List>
     </div>
   );

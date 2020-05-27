@@ -128,9 +128,11 @@ const Login = () => {
 		.catch(e => setErrPassword(e.errors));
 	};
 
-	const onSubmitHandler = async (e) => {
-
-	}
+	const onSubmitHandler =
+	!((emailSchema.isValidSync({email})
+		&& passwordSchema.isValidSync({password})
+		));
+		
   return (
     <div>
 			<List className={`${classes.listStyle} && ${classes.root}`}>
@@ -166,7 +168,7 @@ const Login = () => {
 							onInput={changeInputPassword}
 							InputProps={{
 								classes: {
-									notchedOutline: (errEmail?.length > 0) ? classes.textFieldErr : classes.textFieldOk,
+									notchedOutline: (errPassword?.length > 0) ? classes.textFieldErr : classes.textFieldOk,
 								}
 							}}
 						/>
@@ -188,8 +190,8 @@ const Login = () => {
 						className={`${classes.button} && ${classes.btnSubmit}`} 
 						variant="contained" 
 						color="primary"
-						onClick={onSubmitHandler}
-						// disabled
+						// onClick={onSubmitHandler}
+						disabled={onSubmitHandler}
 					>Submit</Button>
 					<Button 
 						className={`${classes.button} && ${classes.btnSignUp}`} 
