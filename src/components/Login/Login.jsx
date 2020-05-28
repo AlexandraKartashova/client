@@ -5,6 +5,9 @@ import List from '@material-ui/core/List';
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
 import * as Yup from 'yup';
+// import APIService from '../../routing/API';
+// import axios from 'axios';
+// import * as AXIOS from 'axios';
 
 const useStyles = makeStyles({
 	root: {
@@ -128,10 +131,25 @@ const Login = () => {
 		.catch(e => setErrPassword(e.errors));
 	};
 
-	const onSubmitHandler =
+	const onDesable =
 	!((emailSchema.isValidSync({email})
 		&& passwordSchema.isValidSync({password})
 		));
+
+	// const onSubmitHandler = async() => {
+	// 	const result = await AXIOS.get('http://localhost:3000/files/all');
+	// console.log('result', result)
+	
+		// APIService.post('http://localhost:3000/files/all', 
+		// 	{email, password})
+		// 	.then(response => {
+		// 		console.log('SUCCESS');
+		// 		console.log(response.data);
+		// 	})
+		// 	.catch((e) => {
+		// 		console.log(e);
+		// 	});
+	// }
 		
   return (
     <div>
@@ -139,7 +157,7 @@ const Login = () => {
 				<div className={classes.top}>
 					<div className={classes.lable}>Sign in</div>
 				</div >
-				<form className={classes.root} noValidate autoComplete="off" method='post'>
+				<form className={classes.root} noValidate autoComplete="on" method='post'>
 					<div className={classes.div}>
 						<TextField 
 							className={classes.textField} 
@@ -191,7 +209,7 @@ const Login = () => {
 						variant="contained" 
 						color="primary"
 						// onClick={onSubmitHandler}
-						disabled={onSubmitHandler}
+						disabled={onDesable}
 					>Submit</Button>
 					<Button 
 						className={`${classes.button} && ${classes.btnSignUp}`} 

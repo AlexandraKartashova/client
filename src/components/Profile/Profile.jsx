@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import List from '@material-ui/core/List';
 import Button from '@material-ui/core/Button';
+import axios from 'axios';
 
 const useStyles = makeStyles({
 	root: {
@@ -61,11 +62,13 @@ const useStyles = makeStyles({
 		marginBottom: '12px',
 	},
 });
+// axios.get('/user/:id=5ec5169dfb1db130b4363b09');
+	console.log(axios.get('/user/:id=5ec5169dfb1db130b4363b09'))
 
 const Profile = () =>{
 	const classes = useStyles();
 
-
+	
 	return(
 		<div>
 			<List className={`${classes.listStyle} && ${classes.root}`}>
