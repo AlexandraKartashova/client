@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import List from '@material-ui/core/List';
+// import List from '@material-ui/core/List';
 import Button from '@material-ui/core/Button';
-import axios from 'axios';
+// import axios from 'axios';
+import * as AXIOS from 'axios';
+import Footer from '../Footer/Footer';
+// import Header from '../Header/Header';
 
 const useStyles = makeStyles({
 	root: {
@@ -51,7 +54,7 @@ const useStyles = makeStyles({
 		fontWeight: 'bold',
 		marginRight: '10px',
 	},
-	btnUpdate: {
+	btnChange: {
 		marginTop: '10px',
 		marginBottom: '10px'
 	},
@@ -62,16 +65,36 @@ const useStyles = makeStyles({
 		marginBottom: '12px',
 	},
 });
-// axios.get('/user/:id=5ec5169dfb1db130b4363b09');
-	console.log(axios.get('/user/:id=5ec5169dfb1db130b4363b09'))
 
 const Profile = () =>{
 	const classes = useStyles();
+	const [id,setId] = useState('');
+	const [email, setEmail] = useState('');
+	const [password, setPassword] = useState('');
+	const [firstName, setFirstName] = useState('');
+	const [lastName, setLastName] = useState('');
+	// const [confirmPassword, setConfirmPassword] = useState('');
 
-	
+	const onSubmitHandler = async() => {
+		const result = await AXIOS.get(`http://localhost:8080/user/:${id}`);
+		console.log('result', result)
+	}
+
+	const	chengeDataUser = async() => {
+		const result = await AXIOS.patch('http://localhost:8080/user/:id', {email, password, firstName, lastName});
+		console.log('result', result)
+	}
+	// const onDesabled = true;
+	// console.log(onDesabled)
+	// const unLockTextField = () => {
+	// 	const onDesabled = true;
+	// 	console.log(onDesabled)
+	// }
+
 	return(
 		<div>
-			<List className={`${classes.listStyle} && ${classes.root}`}>
+			{/* <Header />/ */}
+			{/* <List className={`${classes.listStyle} && ${classes.root}`}> */}
 				<div className={classes.top}>
 					<div className={classes.lable}>Profile</div>
 				</div >
@@ -79,6 +102,7 @@ const Profile = () =>{
 					<div className={classes.div}>
 						<TextField 
 							className={classes.textField} 
+							// disabled
 							// value={firstName}
 							variant="outlined" 
 							// onInput={changeInputFirstName}
@@ -87,7 +111,8 @@ const Profile = () =>{
 					</div>
 					<div className={classes.div}>
 						<TextField 
-							className={classes.textField} 
+							className={classes.textField}
+							// disabled 
 							// value={lastName}
 							variant="outlined" 
 							// onInput={changeInputLastName}
@@ -97,6 +122,7 @@ const Profile = () =>{
 					<div className={classes.div}>
 						<TextField 
 							className={classes.textField} 
+							// disabled
 							// value={password}
 							// type='password'
 							variant="outlined" 
@@ -109,6 +135,7 @@ const Profile = () =>{
 							className={classes.textField}
 							// value={confirmPassword}
 							variant="outlined"
+							// disabled={onDesabled}
 							// onInput={changeInputConfirmPassword}
 							required
 						/>
@@ -116,12 +143,13 @@ const Profile = () =>{
 				</form>
 				<div>
 					<Button 
-						className={`${classes.button} && ${classes.btnUpdate}`} 
-						id='btnUpdate'
+						className={`${classes.button} && ${classes.btnChange}`} 
+						id='btnChange'
 						variant="contained" 
 						color="primary" 
+						onClick={chengeDataUser}
 						// disabled={loginHandler}
-					>Update</Button>
+					>Change</Button>
 					<Button 
 						className={`${classes.button} && ${classes.btnCancel}`} 
 						// onClick={this.loginHandler}
@@ -130,7 +158,8 @@ const Profile = () =>{
 						Cancel	
 					</Button>
 				</div>
-			</List>
+				<Footer />
+			{/* </List> */}
 		</div>
 	)
 }

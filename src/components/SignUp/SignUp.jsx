@@ -5,6 +5,7 @@ import List from '@material-ui/core/List';
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
 import * as Yup from 'yup';
+import * as AXIOS from 'axios';
 // import classes from './SignUp.module.css';
 
 const useStyles = makeStyles({
@@ -214,6 +215,11 @@ const SignUp = () => {
 		&& (confirmPassword === password)
 		));
 
+	const onSubmitHandler = async() => {
+			const result = await AXIOS.post('http://localhost:8080/register', {email, password, firstName, lastName});
+		console.log('result', result)
+	}
+
   return (
     <div>
 			<List className={`${classes.listStyle} && ${classes.root}`}>
@@ -320,6 +326,7 @@ const SignUp = () => {
 						variant="contained" 
 						color="primary" 
 						disabled={loginHandler}
+						onClick={onSubmitHandler}
 					>Submit</Button>
 					<Button 
 						className={`${classes.button} && ${classes.btnSignIn}`} 
